@@ -3,13 +3,15 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-  let trimmed = s.replace(/\s/g, '')
-    .replace(/[^\w]|_/g, '')
-  let reversedTrim = s.replace(/\s/g, '')
-    .replace(/[^\w]|_/g, '')
-    .split('')
-    .reverse()
-    .join('');
-    console.log(trimmed.toLowerCase(), reversedTrim.toLowerCase());
-  return (trimmed.toLowerCase() === reversedTrim.toLowerCase())
+  let trimmed = s.replace(/[^\w]|_|\s/g, '').toLowerCase()
+  let l = 0;
+  let r = trimmed.length - 1;
+  while (l < r) {
+    if (trimmed[l] !== trimmed[r]) {
+      return false
+    }
+    l++
+    r--
+  }
+  return true
 };
